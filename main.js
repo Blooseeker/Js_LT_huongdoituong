@@ -432,35 +432,84 @@ console.log(M);
 // 34.12 Instance Method và Static Method trong JS Hiểu rõ về Static method trong JS JS OOP Explained
 // https://www.youtube.com/watch?v=Pjd5tLaQuv0
 
-class Circle {
-  constructor(radius) {
-    this.radius = radius;
+// class Circle {
+//   constructor(radius) {
+//     this.radius = radius;
+//   }
+
+//   // instance method
+//   draw() {
+//     console.log("Phương thức Draw được gọi");
+//   }
+//   // static method
+//   static calcArea(radius) {
+//     return Math.PI * radius * radius;
+//   }
+// }
+
+// // tạo đối tượng
+// const c1 = new Circle(10);
+// const c2 = new Circle(5);
+
+// // console.log(c1.draw());
+// // console.log(c2.draw());
+
+// c1.draw();
+// c2.draw();
+
+// // gọi phương thức tĩnh
+// console.log(Circle.calcArea(10));
+// console.log(Circle.calcArea(5));
+
+// // ví dụ dễ hiểu
+// a = -10;
+// console.log(Math.abs(a));
+
+// 34.13 JavaScript ES6 - Học Kế thừa trong JavaScript ES6
+// https://www.youtube.com/watch?v=aNndkRPxNaM
+//  Định nghĩa lớp cơ sở School
+class School {
+  constructor(id, name, birthYear) {
+    this.id = id;
+    this.name = name;
+    this.birthYear = birthYear;
   }
 
-  // instance method
-  draw() {
-    console.log("Phương thức Draw được gọi");
-  }
-  // static method
-  static calcArea(radius) {
-    return Math.PI * radius * radius;
+  // Phương thức của lớp School
+  calcAge(currentYear) {
+    return currentYear - this.birthYear;
   }
 }
 
-// tạo đối tượng
-const c1 = new Circle(10);
-const c2 = new Circle(5);
+// lớp student kế thừa từ class school (có thêm thuộc tính và phương thức mới)
+class Student extends School {
+  constructor(id, name, birthYear, major) {
+    super(id, name, birthYear);
+    this.major = major;
+  }
 
-// console.log(c1.draw());
-// console.log(c2.draw());
+  // phương thức riêng của student
+  study() {
+    console.log(`${this.name} is studying ${this.major}`);
+  }
+}
 
-c1.draw();
-c2.draw();
+// Tạo đối tượng của school
+const p1 = new School("081196", "Đức Anh", 2000);
+// truy xuất thuộc tính và phương thức của class School
+console.log(p1.id);
+console.log(p1.birthYear);
+console.log(p1.calcAge(2025));
 
-// gọi phương thức tĩnh
-console.log(Circle.calcArea(10));
-console.log(Circle.calcArea(5));
+//  Tạo đối tượng của sub class Student
+const s1 = new Student("00009", "Đức Em", 1999, "Kĩ Thuật Điện");
+// truy xuất thuộc tính và phương thức của class Student kế thừa từ School
+console.log(s1.id);
+console.log(s1.birthYear);
+console.log(s1.calcAge(2025));
 
-// ví dụ dễ hiểu
-a = -10;
-console.log(Math.abs(a));
+//truy cập thuộc tính và phương thức của Sub class student
+console.log(s1.major);
+s1.study();
+
+console.log(s1);
