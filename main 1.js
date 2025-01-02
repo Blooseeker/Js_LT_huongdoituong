@@ -641,21 +641,21 @@ console.log(M);
 class Wallet {
   constructor(bankName, pin) {
     this.bankName = bankName;
-    this._pin = pin;
-    this._balance = 0; // Tài khoản bằng không lúc tạo thẻ
+    this.pin = pin;
+    this.balance = 0; // Tài khoản bằng không lúc tạo thẻ
   }
 
   // Phương thức gửi tiền vào tài khoản
   deposit(value) {
-    this._balance += value;
+    this.balance += value;
   }
 
   // rút tiền
   withdraw(value) {
-    if (value > this._balance) {
+    if (value > this.balance) {
       console.log("Số tiền trong tài khoản không đủ");
     } else {
-      this._balance -= value;
+      this.balance -= value;
       console.log("Rút tiền thành công");
     }
   }
@@ -664,7 +664,7 @@ class Wallet {
 // tạo đối tượng
 const wallet = new Wallet("MB bank", "1234");
 
-console.log(wallet._balance);
+console.log(wallet.balance);
 // gửi tiền
 wallet.deposit(1500);
 // rút tiền
@@ -672,8 +672,8 @@ wallet.withdraw(1100); // 1100< 1500 rút tiền thành công
 // wallet.withdraw(2500); // 2500 >1500 tiền ko đủ để rút
 
 // Xem tài khoản or xem mã pin
-console.log(wallet._balance); // hiển thị tiền sau gửi or rút
-console.log(wallet._pin);
+console.log(wallet.balance); // hiển thị tiền sau gửi or rút
+console.log(wallet.pin);
 
 //  Bài toán là chúng ta không mong muốn cho phép truy cập
 // trực tiếp để kiểm tra số dư và mã pin
