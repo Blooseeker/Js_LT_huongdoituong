@@ -638,42 +638,56 @@ console.log(M);
 // Public method: Phương thức công khai
 // Private method: Phương thức riêng tư
 
-class Wallet {
-  constructor(bankName, pin) {
-    this.bankName = bankName;
-    this._pin = pin;
-    this._balance = 0; // Tài khoản bằng không lúc tạo thẻ
-  }
+// class Wallet {
+//   #pin;
+//   #balance;
+//   constructor(bankName, pin) {
+//     this.bankName = bankName;
+//     this._pin = pin;
+//     this._balance = 0; // Tài khoản bằng không lúc tạo thẻ
+//   }
 
-  // Phương thức gửi tiền vào tài khoản
-  deposit(value) {
-    this._balance += value;
-  }
+//   // Phương thức gửi tiền vào tài khoản
+//   deposit(value) {
+//     this._balance += value;
+//   }
 
-  // rút tiền
-  withdraw(value) {
-    if (value > this._balance) {
-      console.log("Số tiền trong tài khoản không đủ");
-    } else {
-      this._balance -= value;
-      console.log("Rút tiền thành công");
-    }
-  }
-}
+//   // rút tiền
+//   withdraw(value) {
+//     if (value > this._balance) {
+//       console.log("Số tiền trong tài khoản không đủ");
+//     } else {
+//       this._balance -= value;
+//       console.log("Rút tiền thành công");
+//     }
+//   }
+// }
 
-// tạo đối tượng
-const wallet = new Wallet("MB bank", "1234");
+// // tạo đối tượng
+// const wallet = new Wallet("MB bank", "1234");
 
-console.log(wallet._balance);
-// gửi tiền
-wallet.deposit(1500);
-// rút tiền
-wallet.withdraw(1100); // 1100< 1500 rút tiền thành công
-// wallet.withdraw(2500); // 2500 >1500 tiền ko đủ để rút
+// console.log(wallet._balance);
+// // console.log(wallet.#balance); // báo lỗi ko thể truy cập ngay vì là riêng tư
+// // gửi tiền
+// wallet.deposit(1500);
+// // rút tiền
+// wallet.withdraw(1100); // 1100< 1500 rút tiền thành công
+// // wallet.withdraw(2500); // 2500 >1500 tiền ko đủ để rút
 
-// Xem tài khoản or xem mã pin
-console.log(wallet._balance); // hiển thị tiền sau gửi or rút
-console.log(wallet._pin);
+// // Xem tài khoản or xem mã pin
+// console.log(wallet._balance); // hiển thị tiền sau gửi or rút
+// console.log(wallet._pin);
+
+// console.log(wallet.#balance); // hiển thị tiền sau gửi or rút // báo lỗi ko thể truy cập ngay vì là riêng tư
+// console.log(wallet.#pin); // báo lỗi ko thể truy cập ngay vì là riêng tư
 
 //  Bài toán là chúng ta không mong muốn cho phép truy cập
 // trực tiếp để kiểm tra số dư và mã pin
+//  gán mã vào dấu #
+// ví dụ trên là thay đổi dấu _ bằng dấu # đằng trước
+// nhưng phải khai báo trường riêng tư trên chỗ wallet dòng 641
+// là : #pin , #balance
+
+// 35.1 JavaScript BOM (Browser Object Model)
+// https://www.youtube.com/watch?v=752UPL_8fCc
+
